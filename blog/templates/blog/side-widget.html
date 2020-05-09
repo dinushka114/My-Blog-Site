@@ -1,0 +1,35 @@
+{% load blog_tags %}
+  <div class="card ">
+    <h5 class="card-header"><i class="fa fa-search"></i> Search</h5>
+    <div class="card-body">
+      <form action="{% url 'blog:blog-search' %}"  method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control" name='query' value="{{query}}" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button  class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+          </span>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Widget -->
+  <div class="card my-4">
+    <h5 class="card-header"><i class="fa fa-tags"></i> Categories</h5>
+    <div class="card-body">
+      <div class="row">
+        {% for tag in tags %}
+        <div class="col-lg-6 col-sm-6">
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a style="margin-bottom:5px;" class="btn btn-secondary btn-sm" href="{% url 'blog:tagged' tag.slug %}">{{tag.name}}</a><br>
+            </li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Side Widget -->
+{% show_latest_post 5 %}

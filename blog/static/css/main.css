@@ -1,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #f2f2f2;
+
+}
+
+.main-header h1{
+  text-align: center;
+  padding-top:60px;
+  padding-bottom: 60px;
+  font-family: "Raleway", sans-serif;
+
+}
+
+footer {
+  background: #061D25;
+  text-align: center;
+  padding: 10px 0;
+}
+footer a {
+  color: #70726F;
+  font-size: 20px;
+  padding: 10px;
+  /* border-right: 1px solid #70726F; */
+  transition: all .5s ease;
+}
+
+footer p{
+  color: white;
+  padding-top: 20px;
+}
+
+footer a:hover {
+  color: white;
+}

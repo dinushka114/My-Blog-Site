@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<header class="masthead" style="background-image:url({% static 'images/search.jpg' %})">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Blog Search</h1>
+          <!-- <span class="subheading">A Blog Theme by Start Bootstrap</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+		<div class="col-md-8">
+      <h2>Search Results for contain  <em>"{{request.GET.query}}"</em> </h2>
+      <hr>
+      {% for post in posts %}
+      <div class="card mb-4">
+				<img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+				<div class="card-body">
+					<a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0" class="card-title" >{{post.title}}</h2></a>
+          <hr style="margin:2px 0px;">
+					<p class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
+					<a  href="{{ post.get_absolute_url }}" class="btn btn-secondary btn-sm">Read More &rarr;</a>
+				</div>
+        <div class="card-footer text-muted">
+          <div class="row">
+            <div class="col-sm-4">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+    					{{post.publish | date:"F d,Y" }}
+            </div>
+            <div class="col-sm-4">
+                <p style="margin-bottom:0;"><i class="fa fa-tags"></i> {{ post.tags.all|join:", " }}</p>
+            </div>
+            <div class="col-sm-4">
+              <i class="fa fa-comment"></i>
+                <a class="text-muted" href="{{post.get_absolute_url}}#disqus_thread">Comments</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="p-3 mb-2 bg-danger text-white">
+          <p>No results for "{{request.GET.query}}"</p>
+      </div>
+			{% endfor %}
+
+
+		</div>
+		<div class="col-md-4">
+			{% include 'blog/side-widget.html' %}
+      <p><a class="btn btn-secondary btn-sm" href="{% url "blog:post_feed" %}">Subscribe my rss feed <i class="fa fa-rss"></i> </a></p>
+		</div>
+	</div>
+</div>
+
+
+{% endblock content %}
