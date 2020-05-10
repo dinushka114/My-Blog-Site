@@ -46,8 +46,5 @@ class BlogSearchListView(TagMixin ,ListView):
     def get_queryset(self):
         keywords = self.request.GET.get('query')
         if(keywords):
-            posts = Post.objects.filter(
-            Q(title__icontains=keywords)|
-            Q(body__icontains=keywords)
-            )
+            posts = Post.objects.filter(Q(title__icontains=keywords)|Q(body__icontains=keywords))
             return posts

@@ -1,5 +1,8 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% block title %}
+<title>My projects</title>
+{% endblock title %}
 {% block content %}
 <header class="masthead" style="background-image:url({% static 'images/projects.jpg' %})">
   <div class="overlay"></div>
@@ -18,7 +21,7 @@
 <div class="container">
   <div class="row">
       <div class="col-sm-8 col-md-8">
-        <p style="font-size:20px;">This projects were build in django framework </p>
+        <p style="font-size:20px;">This projects were built in django framework </p>
         <div class="Intro">
           <h3 style="font-family:sans-serif"> <strong>This Blog</strong> </h3>
           <hr>
@@ -29,10 +32,7 @@
             <h3 style="font-family:sans-serif;margin-top:40px;"> <strong>Youtube Video Downloader</strong> </h3>
             <p class="text-secondary">You can found this project <a href="https://github.com/dinushka114/Youtube-downloader">here</a></p>
             <hr>
-            <img src="{% static 'images/ytd.png' %}" alt="youtube" width="500" class="img-fluid">
-
-
-            <!-- <p style="margin-top:20px;"> <strong></strong>  </p> -->
+            <img src="{% static 'images/ytd.png' %}" alt="youtube" width="500" class="img-fluid" style="margin-bottom:10px;">
           </div>
 
         </div>

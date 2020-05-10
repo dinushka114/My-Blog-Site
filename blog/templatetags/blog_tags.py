@@ -1,6 +1,7 @@
 from django import template
 from ..models import Post
 
+
 register = template.Library()
 
 @register.inclusion_tag('blog/latest-post.html')

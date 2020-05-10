@@ -2,7 +2,7 @@
 {% load static %}
 {% load blog_tags %}
 {% block title %}
-<title>{{post.title}}</title>
+<title>Dinushka's Blog</title>
 {% endblock title %}
 {% block content %}
 
@@ -29,24 +29,23 @@
 				<div class="card-body">
 					<a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0" class="card-title" >{{post.title}}</h2></a>
           <hr style="margin:2px 0px;">
+          <small>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            {{post.publish | date:"F d,Y" }} |
+            <i class="fa fa-comment"></i>
+            <a class="text-muted" href="{{post.get_absolute_url}}#disqus_thread"> Comments</a>
+          </small>
 					<p class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
 					<a  href="{{ post.get_absolute_url }}" class="btn btn-secondary btn-sm">Read More &rarr;</a>
+          <ul class="list-unstyled" style="margin-top:20px;">
+            <li>
+              <i class="fa fa-tags"></i>
+              {% for tag in post.tags.all %}
+                <small><a href="{% url 'blog:tagged' tag.slug %}">{{tag}}</a></small>
+              {% endfor %}
+            </li>
+          </ul>
 				</div>
-        <div class="card-footer text-muted">
-          <div class="row">
-            <div class="col-sm-4">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-    					{{post.publish | date:"F d,Y" }}
-            </div>
-            <div class="col-sm-4">
-                <p style="margin-bottom:0;"><i class="fa fa-tags"></i> {{ post.tags.all|join:", " }}</p>
-            </div>
-            <div class="col-sm-4">
-              <i class="fa fa-comment"></i>
-                <a class="text-muted" href="{{post.get_absolute_url}}#disqus_thread">Comments</a>
-            </div>
-          </div>
-        </div>
       </div>
 			{% endfor %}
       {% include 'blog/paginator.html' %}

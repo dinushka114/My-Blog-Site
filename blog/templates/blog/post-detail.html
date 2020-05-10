@@ -10,6 +10,9 @@
   <meta property="og:title" content="{{ object.title }}">
   <meta property="og:type" content="article">
 {% endblock meta %}
+{% block title %}
+<title>{{object.title}}</title>
+{% endblock title %}
 {% block content %}
 <header class="masthead" style="background-image: url('{{object.image.url}}')">
     <div class="overlay"></div>
@@ -33,7 +36,7 @@
     <div class="col-md-8 col-lg-8">
         <p style="margin-bottom:0">{{object.body|safe}}</p>
         <hr>
-        <div id="disqus_thread"></div>
+        <div id="disqus_thread" ></div>
             <script>
 
             /**
