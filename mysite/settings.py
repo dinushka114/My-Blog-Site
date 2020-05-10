@@ -35,13 +35,13 @@ INSTALLED_APPS = [
     'taggit',
     'tinymce',
     'blog',
+    'meta',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres',
     'django.contrib.sites',
     'django.contrib.sitemaps',
 ]
@@ -134,6 +134,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+# DROPBOX_OAUTH2_TOKEN = 'SnNkq-oiifAAAAAAAAAAHxvk-QpoAW3SF9uVeCE9WEVdhLPShCHkvBOyut_SkIIj'
+# DROPBOX_ROOT_PATH = '/media/'
 
 common_content_base_url = STATIC_URL + 'common_content/'
 

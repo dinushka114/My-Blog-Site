@@ -1,6 +1,9 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% load blog_tags %}
+{% block title %}
+<title>{{post.title}}</title>
+{% endblock title %}
 {% block content %}
 
 <header class="masthead" style="background-image:url({% static 'images/mainblog.jpg' %})">
@@ -9,7 +12,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>Dinushka's Blog</h1>
+          <h1 style="font-size:50px;">Share the knowladge</h1>
           <!-- <span class="subheading">Random Tutorials</span> -->
         </div>
       </div>
@@ -44,36 +47,9 @@
             </div>
           </div>
         </div>
-
       </div>
 			{% endfor %}
+      {% include 'blog/paginator.html' %}
 		</div>
-		<div class="col-md-4">
-			{% include 'blog/side-widget.html' %}
-      <p><a class="btn btn-secondary btn-sm" href="{% url "blog:post_feed" %}">Subscribe my rss feed <i class="fa fa-rss"></i> </a></p>
-		</div>
-	</div>
-
-
-
-	{% if is_paginated %}
-  		{% if page_obj.has_previous %}
-  			<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-  			<a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
-  		{% endif %}
-  		{% for num in page_obj.paginator.page_range %}
-  			{% if page_obj.number == num %}
-  				<a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
-  			{% elif num > page_obj.number|add:'-3' and num > page_obj.number|add:'3' %}
-  				<a class="btn btn-outline-info	 mb-4" href="?page={{num}}">{{num}}</a>
-  			{% endif %}
-  		{% endfor %}
-  			{% if page_obj.has_next %}
-  				<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-  				<a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages}}">Last</a>
-  			{% endif %}
-	{% endif %}
-  <script id="dsq-count-scr" src="//myblog-9rtxdxz3e3.disqus.com/count.js" async></script>
-</div>
 
 {% endblock content %}

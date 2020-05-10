@@ -1,27 +1,26 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load blog_tags %}
 {% block content %}
-<header class="masthead" style="background-image:url({% static 'images/search.jpg' %})">
+
+<header class="masthead" style="background-image:url({% static 'images/category.jpg' %})">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>Blog Search</h1>
-          <!-- <span class="subheading">A Blog Theme by Start Bootstrap</span> -->
+          <h1>Blog Categories</h1>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="container">
-  <div class="row">
+<div class="container" >
+	<div class="row">
 		<div class="col-md-8">
-      <h2>Search Results for contain  <em>"{{request.GET.query}}"</em> </h2>
-      <hr>
-      {% for post in posts %}
-      <div class="card mb-4">
+			{% for post in posts %}
+			<div class="card mb-4">
 				<img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
 				<div class="card-body">
 					<a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0" class="card-title" >{{post.title}}</h2></a>
@@ -45,10 +44,8 @@
           </div>
         </div>
       </div>
-      {% empty %}
-      <div class="p-3 mb-2 bg-danger text-white">
-          <p>No results for "{{request.GET.query}}"</p>
-      </div>
 			{% endfor %}
+      {% include 'blog/paginator.html' %}
 		</div>
+
 {% endblock content %}

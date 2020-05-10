@@ -20,8 +20,8 @@
               <h1>{{object.title}}</h1>
               <!-- <h2 class="subheading">{{post.body|safe|truncatewords:10}}</h2> -->
               <span class="meta">Posted by
-                <a href="#">{{post.author}}</a>
-                {{post.publish}}</span>
+                <a href="#">{{object.author}}</a>
+                {{object.publish}}</span>
             </div>
           </div>
         </div>
@@ -29,24 +29,22 @@
 </header>
 
 <div class="container">
-    <div class="col-md col-lg-10 offset-lg-1">
+  <div class="row">
+    <div class="col-md-8 col-lg-8">
         <p style="margin-bottom:0">{{object.body|safe}}</p>
-
         <hr>
-
         <div id="disqus_thread"></div>
-
             <script>
 
             /**
             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-            /*
+
             var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "{{request.build_absolute_uri}}";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "{{ object.get_absolute_url }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
-            */
+
             (function() { // DON'T EDIT BELOW THIS LINE
             var d = document, s = d.createElement('script');
             s.src = 'https://myblog-9rtxdxz3e3.disqus.com/embed.js';
@@ -56,6 +54,4 @@
             </script>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
-</div>
-
 {% endblock content %}

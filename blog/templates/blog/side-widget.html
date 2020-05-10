@@ -19,13 +19,11 @@
     <div class="card-body">
       <div class="row">
         {% for tag in tags %}
-        <div class="col-lg-6 col-sm-6">
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a style="margin-bottom:5px;" class="btn btn-secondary btn-sm" href="{% url 'blog:tagged' tag.slug %}">{{tag.name}}</a><br>
+          <ul class="list-unstyled  mb-0">
+            <li style="margin-left:5px;">
+              <a style="margin-bottom:5px;margin-right:5px;" class="btn btn-secondary" href="{% url 'blog:tagged' tag.slug %}">{{tag.name}}</a><br>
             </li>
           </ul>
-        </div>
         {% endfor %}
       </div>
     </div>

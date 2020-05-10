@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
-from django.views.generic import ListView , DetailView
+from django.views.generic import ListView , DetailView ,TemplateView
 from .models import Post
 from taggit.managers import TaggableManager
 from taggit.models import Tag
 from django.db.models import Q
 
-def about(request):
-    return render(request , 'blog/about.html')
 
 class TagMixin(object):
     def get_context_data(self,**kwargs):
@@ -16,20 +14,26 @@ class TagMixin(object):
         context['tags'] = Tag.objects.all()
         return context
 
+class AboutView(TagMixin , TemplateView):
+    template_name = 'blog/about.html'
+
+class ProjectsView(TagMixin , TemplateView):
+    template_name = 'blog/projects.html'
+
 class PostListView(TagMixin , ListView):
     model = Post
     template_name = 'blog/index.html'
     paginate_by = 4
     context_object_name = 'posts'
 
-
-class PostDetailView(DetailView):
+class PostDetailView(TagMixin , DetailView):
     model = Post
     template_name = 'blog/post-detail.html'
 
+
 class TagIndexView(TagMixin , ListView):
     model = Post
-    template_name = 'blog/index.html'
+    template_name = 'blog/category-view.html'
     context_object_name = 'posts'
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs.get('slug'))
