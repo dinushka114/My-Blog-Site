@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
 # Application definition
 SITE_ID = 1
 
@@ -44,7 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'taggit_templatetags2'
+    'taggit_templatetags2',
+    'debug_toolbar',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -55,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -84,13 +91,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'blog',
+                'NAME': 'myblog',
                 'USER': 'root',
                 'PASSWORD': '',
                 'HOST':'localhost',
                 'PORT':'3306',
             }
 }
+
+
 
 
 # Password validation
@@ -141,57 +150,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
 # DROPBOX_ROOT_PATH = '/media/'
 
 common_content_base_url = STATIC_URL + 'common_content/'
-
-# TINYMCE_DEFAULT_CONFIG = {
-#     'height': 360,
-#     'width': 1120,
-#     'cleanup_on_startup': True,
-#     'custom_undo_redo_levels': 20,
-#     'selector': 'textarea',
-#     'theme': 'modern',
-#      'codesample_languages': [
-#          {'text': 'Python', 'value': 'python'},
-#          {'text': 'HTML/XML', 'value': 'markup'},
-#          {'text': 'Django/Jinja2', 'value': 'django'},
-#          {'text': 'CSS', 'value': 'css'},
-#          {'text': 'JavaScript', 'value': 'javascript'},
-#          {'text': 'C++', 'value': 'cpp'},
-#          {'text': 'C', 'value': 'c'},
-#          {'text': 'C#', 'value': 'csharp'},
-#          {'text': 'Windows BAT', 'value': 'batch'},
-#          {'text': 'Bash', 'value': 'bash'},
-#          {'text': 'YAML', 'value': 'yaml'},
-#          {'text': 'SQL', 'value': 'sql'},
-#          {'text': 'reStructuredText', 'value': 'rest'},
-#          {'text': 'Plain Text', 'value': 'none'},
-#      ],
-#     'plugins':'''
-#             textcolor save link image media preview codesample contextmenu
-#             table code lists fullscreen  insertdatetime  nonbreaking
-#             contextmenu directionality searchreplace wordcount visualblocks
-#             visualchars code fullscreen autolink lists  charmap print  hr
-#             anchor pagebreak
-#             ''',
-#     'toolbar1':'codesample' '''
-#             fullscreen preview bold italic underline | fontselect,
-#             fontsizeselect  | forecolor backcolor | alignleft alignright |
-#             aligncenter alignjustify | indent outdent | bullist numlist table |
-#             | link image media | codesample |
-#             ''',
-#     'toolbar2': '''
-#             visualblocks visualchars |
-#             charmap hr pagebreak nonbreaking anchor |  code |
-#             ''',
-#     'contextmenu': 'formats | link image',
-#     'menubar': True,
-#     'statusbar': True,
-#     'external_plugins': {
-#         'spoiler': '../../../common_content/js/spoiler/plugin.min.js',
-#         'django_saveandcontinue': '../../../common_content/js/django_saveandcontinue/plugin.min.js',
-#         'codesample': '../../../common_content/js/codesample/plugin.min.js',
-#         'preview': '../../../common_content/js/preview/plugin.min.js'
-#     },
-#     }
 
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'modern',
@@ -258,11 +216,12 @@ TINYMCE_ADDITIONAL_JS_URLS = [
     common_content_base_url + 'js/prism-django.min.js'
 ]
 
-WHOOSH_INDEX = os.path.join(BASE_DIR , 'whoosh_index/')
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
-    },
-}
+AWS_ACCESS_KEY_ID = 'AKIA52AEH2JR2LCHREGT'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'mytechdiary'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

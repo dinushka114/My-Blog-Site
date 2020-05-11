@@ -23,6 +23,7 @@
 <div class="container" >
 	<div class="row">
 		<div class="col-md-8">
+      {% if posts %}
 			{% for post in posts %}
 			<div class="card mb-4">
 				<img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
@@ -48,6 +49,7 @@
 				</div>
       </div>
 			{% endfor %}
+      {% endif %}
       {% include 'blog/paginator.html' %}
 		</div>
 

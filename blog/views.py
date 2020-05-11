@@ -25,6 +25,7 @@ class PostListView(TagMixin , ListView):
     template_name = 'blog/index.html'
     paginate_by = 4
     context_object_name = 'posts'
+    queryset = Post.objects.filter(status='published')
 
 class PostDetailView(TagMixin , DetailView):
     model = Post
@@ -33,7 +34,7 @@ class PostDetailView(TagMixin , DetailView):
 
 class TagIndexView(TagMixin , ListView):
     model = Post
-    template_name = 'blog/category-view.html'
+    template_name = 'blog/tags-view.html'
     context_object_name = 'posts'
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs.get('slug'))

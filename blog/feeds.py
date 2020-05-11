@@ -8,11 +8,10 @@ class LatestPostsFeed(Feed):
     description = 'New Posts of my blog'
 
     def items(self):
-        return Post.objects.all()[:5]
+        return Post.objects.filter(status='published')[:5]
 
     def item_title(self , item):
         return item.title
 
     def item_description(self , item):
         return truncatewords(item.body , 30)
-        
