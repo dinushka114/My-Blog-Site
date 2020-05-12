@@ -2,11 +2,11 @@
 {% load static %}
 {% load blog_tags %}
 {% block title %}
-<title>Dinushka's Blog</title>
+<title>Categories</title>
 {% endblock title %}
 {% block content %}
 
-{% for post in posts %}
+{% for post in object_list %}
 <div class="card mb-4 posts">
   <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
   <div class="card-body">
@@ -17,7 +17,7 @@
       {{post.publish | date:"F d,Y"}}
     </small>
     <p style="margin-top:5px;" class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
-    <a  href="{{ post.get_absolute_url }}" class="btn btn-success">Read More</a>
+    <a  href="{{ post.get_absolute_url }}" class="btn btn-success btn-sm">Read More</a>
     <ul class="list-unstyled" style="margin-top:20px;">
       <li>
         <i class="fa fa-tags"></i>
@@ -28,6 +28,8 @@
     </ul>
   </div>
 </div>
+{% empty %}
+<p>Sorry..There is no posts</p>
 {% endfor %}
 
 {% endblock content %}

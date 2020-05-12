@@ -1,4 +1,4 @@
-<div class="card" style="margin-bottom:5px;">
+<div class="card">
   <h5 class="card-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Latest Posts</h5>
   <div class="card-body">
     <div class="row">
@@ -8,7 +8,7 @@
           <li>
               <a href="{{post.get_absolute_url}}"> <p class="text-secondary" style="margin-bottom:5px;">{{post.title}}</p> </a>
               <small><p class="text-muted"><i class="fa fa-calendar" aria-hidden="true"></i>
-    					{{post.publish | date:"F d,Y" }}</p></small>
+              {{post.publish | date:"F d,Y" }}</p></small>
           </li>
           {% endfor %}
         </ul>

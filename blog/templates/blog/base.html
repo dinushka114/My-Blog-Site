@@ -9,61 +9,109 @@
   {% endblock meta %}
   {% block title %}
   {% endblock title %}
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Slabo 27px' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/main.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link href="{% static "common_content/css/prism.css" %}" rel="stylesheet">
 
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static "common_content/css/prism.css" %}" rel="stylesheet">
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="/">My tech diary</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:about' %}">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:projects' %}">My Projects</a>
-          </li>
-        </ul>
+
+<div id="topheader">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <!-- <img src="http://placehold.it/150x50?text=Logo" alt=""> -->
+      <i class="fa fa-book fa-2x"></i>
+      <a href="/"><h3>My Tech Diary</h3></a>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'blog:projects' %}">My Projects</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'blog:about' %}">About Me</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+</div>
+<div class="middle-bar clearfix">
+      <div class="container">
+      <div class="left-side">
+            <!-- <h3><a href="/">{{request.path}}</a> / {{ object.title}}</h3> -->
+            <h3>My tech diary</h3>
+        </div>
+      <form method="GET" action="{% url 'blog:blog-search' %}">
+        <div class="search">
+          <input type="text" placeholder="Search for.." name='query'>
+          <!-- <input type="submit" value='Search'> -->
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container main-page">
+    <div class="row">
+      <div class="col-md-8 col-sm-8">
+        {% block content %}
+        {% endblock content %}
+      {% include 'blog/paginator.html' %}
+      </div>
+      <div class="col-sm-4 col-md-4">
+        {% include 'blog/side-widget.html' %}
       </div>
     </div>
-</nav>
-
-
-
-{% block content %}
-{% endblock content %}
-    <div class="col-md-4">
-      {% include 'blog/side-widget.html' %}
-      <!-- <p><a class="btn btn-secondary btn-sm" href="{% url "blog:post_feed" %}">Subscribe my rss feed <i class="fa fa-rss"></i> </a></p> -->
-    </div>
   </div>
-</div>
 
-<footer style="padding-bottom:0;">
-  <p style="font-family: Helvetica;" >Follow me on</p>
-  <a target="_blank" href="https://api.whatsapp.com/send?phone=0763538804&text"><i class="fa fa-whatsapp"></i></a>
-  <a target="_blank" href="https://github.com/dinushka114"><i class="fa fa-github"></i></a>
-  <a href="https://www.linkedin.com/in/dinushka-piyumal-a689001a5/" target="_blank"><i class="fa fa-linkedin"></i></a>
-  <a href="mailto:dinushkapiyumal678@gmail.com"><i class="fa fa-envelope"></i></a>
-  <a href="https://www.instagram.com/dinushka_piyumal/" target="_blank"><i class="fa fa-instagram"></i></a>
-  <p style="font-family: Helvetica;" >Powered by <a href="https://getbootstrap.com/">Bootstrap</a> and <a href="https://www.djangoproject.com/">Django♥</a> </p>
-  <div class="bottom-bar clearfix" style="width: 100%;background-color:black;color:#f2f2f2;">
-    <p style="font-family: Helvetica ;margin-bottom:0;padding-bottom: 15px;float:left;margin-left:20px;" class="text-secondary">All right reserved ©2020</p>
+<div class="footer">
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>I've written {% total_posts %} posts so far</p>
+            </div>
+            <div class="col-sm-6">
+              <p>Follow me on</p>
+              <div class="social">
+                <a href="https://www.linkedin.com/in/dinushka-piyumal-a689001a5/" target="_blank" class="fa fa-linkedin"></a>
+                <a href="https://www.instagram.com/dinushka_piyumal/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://api.whatsapp.com/send?phone=0763538804&text" target="_blank" class="fa fa-whatsapp"></a>
+                <a href="https://github.com/dinushka114" target="_blank" class="fa fa-github"></a>
+                <a href="mailto:dinushkapiyumal678@gmail.com" class="fa fa-envelope"></a>
+                <p>powerd by  <a href="https://www.djangoproject.com/">Django &#10084;</a> </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="bottom-line clearfix">
+        <div class="site-name">
+          <h4>©2020 mytechdiary.pythonanywhere.com</h4>
+        </div>
+
+      </div>
   </div>
-</footer>
+
+  <script>
+    $('#topheader .navbar-nav a').on( 'click',function(){
+      $('#topheader .navbar-nav').find('li.active').removeClass( 'active' );
+      $( this ).parent( 'li' ).addClass('active');
+    });
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
