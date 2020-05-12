@@ -16,12 +16,14 @@
 {% block content %}
 
 
-
+  <h3>{{object.title}}</h3>
   <div class="featured-img">
-    <i class="fa fa-calendar" aria-hidden="true"></i>
-    {{object.publish | date:"F d,Y"}} |
-    <i class="fa fa-comment"></i>
-    <a class="text-muted" href="{{post.get_absolute_url}}#disqus_thread"> Comments</a>
+    <small>
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      {{object.publish | date:"F d,Y"}} |
+      <i class="fa fa-comment"></i>
+      <a class="text-muted" href="{{post.get_absolute_url}}#disqus_thread"> Comments</a>
+    </small> <hr>
     <img class="img-fluid" src="{{object.image.url}}" alt="image">
   </div>
   <p style="margin-bottom:0">{{object.body|safe}}</p>

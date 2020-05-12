@@ -30,11 +30,11 @@ class ProjectsView(CategoryMixin , TagMixin , TemplateView):
 class PostListView(CategoryMixin , TagMixin , ListView):
     model = Post
     template_name = 'blog/index.html'
-    paginate_by = 4
+    paginate_by = 7
     context_object_name = 'posts'
     queryset = Post.objects.filter(status='published').order_by('-publish')
 
-class PostDetailView(CategoryMixin , TagMixin , DetailView):
+class PostDetailView( CategoryMixin , TagMixin , DetailView):
     model = Post
     template_name = 'blog/post-detail.html'
 
@@ -43,12 +43,14 @@ class TagIndexView(CategoryMixin , TagMixin , ListView):
     model = Post
     template_name = 'blog/tags-view.html'
     context_object_name = 'posts'
+    paginate_by = 7
     def get_queryset(self):
-        return Post.objects.filter(tags__slug=self.kwargs.get('slug'))
+        return Post.objects.filter(tags__slug=self.kwargs.get('slug')).order_by('-publish')
 
 class CategoryIndexView(CategoryMixin , TagMixin , ListView):
     model = Post
     template_name = 'blog/category-view.html'
+    paginate_by = 7
     def get_queryset(self):
         return Post.objects.filter(status = 'published' ,category=self.kwargs.get('cat'))
 

@@ -22,7 +22,6 @@
 </head>
 <body>
 
-<div id="topheader">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -34,32 +33,34 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto items">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a style="color:white;" class="nav-link navlink" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a style="color:white;" class="nav-link navlink" href="{% url 'blog:projects' %}">My Projects</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="{% url 'blog:projects' %}">My Projects</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="{% url 'blog:about' %}">About Me</a>
+          <a style="color:white;" class="nav-link navlink" href="{% url 'blog:about' %}">About Me</a>
         </li>
       </ul>
 
     </div>
   </div>
 </nav>
-</div>
+
 <div class="middle-bar clearfix">
       <div class="container">
       <div class="left-side">
-            <!-- <h3><a href="/">{{request.path}}</a> / {{ object.title}}</h3> -->
-            <h3>My tech diary</h3>
+        <nav class="bread" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Blog</a></li>
+          </ol>
+        </nav>
         </div>
       <form method="GET" action="{% url 'blog:blog-search' %}">
         <div class="search">
           <input type="text" placeholder="Search for.." name='query'>
-          <!-- <input type="submit" value='Search'> -->
           <button type="submit"><i class="fa fa-search"></i></button>
         </div>
       </form>
@@ -82,10 +83,8 @@
 <div class="footer">
       <div class="container">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <p>I've written {% total_posts %} posts so far</p>
-            </div>
-            <div class="col-sm-6">
               <p>Follow me on</p>
               <div class="social">
                 <a href="https://www.linkedin.com/in/dinushka-piyumal-a689001a5/" target="_blank" class="fa fa-linkedin"></a>
@@ -93,7 +92,7 @@
                 <a href="https://api.whatsapp.com/send?phone=0763538804&text" target="_blank" class="fa fa-whatsapp"></a>
                 <a href="https://github.com/dinushka114" target="_blank" class="fa fa-github"></a>
                 <a href="mailto:dinushkapiyumal678@gmail.com" class="fa fa-envelope"></a>
-                <p>powerd by  <a href="https://www.djangoproject.com/">Django &#10084;</a> </p>
+                <p>powerd by <a href="https://getbootstrap.com/" target="_blank">bootstrap</a> and <a href="https://www.djangoproject.com/" target="_blank">Django &#10084;</a> </p>
               </div>
             </div>
           </div>
@@ -107,11 +106,13 @@
   </div>
 
   <script>
-    $('#topheader .navbar-nav a').on( 'click',function(){
-      $('#topheader .navbar-nav').find('li.active').removeClass( 'active' );
-      $( this ).parent( 'li' ).addClass('active');
-    });
+        $(document).ready(function() {
+	       var pathname = window.location.pathname;
+	       $('.items > li > a[href="'+pathname+'"]').parent().addClass('active');
+        })
   </script>
+
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
