@@ -5,11 +5,10 @@
 <html lang="en">
   {% block meta %}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% endblock meta %}
 
   {% block title %}
-  <i class="fa fa-d-and-d"></i>
   {% endblock title %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -67,12 +66,12 @@
 
   <div class="container main-page">
     <div class="row">
-      <div class="col-md-8 col-sm-8">
+      <div class="col-sm-8">
         {% block content %}
         {% endblock content %}
       {% include 'blog/paginator.html' %}
       </div>
-      <div class="col-sm-4 col-md-4">
+      <div class="col-sm-4">
         {% include 'blog/side-widget.html' %}
       </div>
     </div>

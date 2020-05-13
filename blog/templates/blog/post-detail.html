@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block meta %}
   <meta name="keywords" content="{{ object.tags.all|join:"," }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% if object.meta_description %}
   <meta name="description" content="{{ object.meta_description }}">
   <meta property="og:description" content="{{ object.meta_description }}">
@@ -16,7 +17,7 @@
 {% block content %}
 
 
-  <h3>{{object.title}}</h3>
+  <!-- <h3>{{object.title}}</h3> -->
   <div class="featured-img">
     <small>
       <i class="fa fa-calendar" aria-hidden="true"></i>
