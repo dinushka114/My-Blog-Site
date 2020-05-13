@@ -166,7 +166,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'plugins': 'advlist autolink link image imagetools lists charmap print hr anchor pagebreak '
                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media '
                'nonbreaking save table contextmenu directionality emoticons template paste textcolor '
-               'spellchecker autosave noneditable',
+               'autosave noneditable',
     'toolbar1': 'django_saveandcontinue | undo redo | cut copy paste | searchreplace | styleselect removeformat | '
                 'fontsizeselect | forecolor backcolor | code preview | spellchecker | fullscreen',
     'toolbar2': 'bold italic underline strikethrough | alignleft aligncenter alignright alignjustify '
@@ -187,8 +187,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'style_formats_merge': True,
     'width': 1024,
     'height': 600,
-    'spellchecker_languages': 'English (US)=en_US,Russian=ru,Ukrainian=uk',
-    'spellchecker_language': 'en_US',
     'plugin_preview_width': 1024,
     'plugin_preview_height': 600,
     'image_advtab': True,
