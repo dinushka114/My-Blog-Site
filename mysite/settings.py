@@ -24,9 +24,9 @@ STATIC_DIR = os.path.join(BASE_DIR , 'static')
 SECRET_KEY = '$-7@bslx6kdv^rhjs8z%=%5&gxi%5)^wcr5)nt2$14(z$vyva('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['mytechdiary.herokuapp.com']
+ALLOWED_HOSTS = ['localhost']
 
 INTERNAL_IPS = [
     # ...
@@ -226,27 +226,14 @@ TINYMCE_ADDITIONAL_JS_URLS = [
     common_content_base_url + 'js/prism-django.min.js'
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
 
 
 
 
-# AWS_ACCESS_KEY_ID = 'AKIA52AEH2JR2LCHREGT'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'mytechdiary'
+
+AWS_ACCESS_KEY_ID = 'AKIA52AEH2JR2LCHREGT'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'mytechdiary'
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
