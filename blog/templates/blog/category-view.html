@@ -17,7 +17,8 @@
       {{post.publish | date:"F d,Y"}}
     </small>
     <p style="margin-top:5px;" class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
-    <button type="button"  class="btn btn-success" name="button"> <a style="color:white;text-decoration:none;" href="{{post.get_absolute_url}}">Read More</a> </button>
+    <!-- <button type="button"  class="btn btn-success" name="button"> <a style="color:white;text-decoration:none;" href="{{post.get_absolute_url}}">Read More</a> </button> -->
+    <a  href="{{ post.get_absolute_url }}" class="btn btn-success">Read More</a>
     <ul class="list-unstyled" style="margin-top:20px;">
       <li>
         <i class="fa fa-tags"></i>
