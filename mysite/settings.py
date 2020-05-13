@@ -27,6 +27,7 @@ SECRET_KEY = '$-7@bslx6kdv^rhjs8z%=%5&gxi%5)^wcr5)nt2$14(z$vyva('
 DEBUG = True
 
 ALLOWED_HOSTS = ['mytechdiary.herokuapp.com']
+# ALLOWED_HOSTS = ['localhost']
 
 INTERNAL_IPS = [
     # ...
