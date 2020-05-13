@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
-from tinymce import HTMLField
+from ckeditor.fields import RichTextField
 from taggit.managers import TaggableManager
 from PIL import Image
 
@@ -25,7 +25,7 @@ class Post(models.Model):
     image = models.ImageField( blank=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_post')
-    body = HTMLField('content')
+    body = RichTextField('content')
     meta_description = models.TextField(max_length=160 , blank=True)
     tags = TaggableManager()
     publish = models.DateTimeField(default=timezone.now)

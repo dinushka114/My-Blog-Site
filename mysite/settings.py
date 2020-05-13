@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'storages',
     'robots',
+    'ckeditor'
 
 
 ]
@@ -161,71 +162,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
 
 common_content_base_url = STATIC_URL + 'common_content/'
 
-TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'modern',
-    'plugins': 'advlist autolink link image imagetools lists charmap print hr anchor pagebreak '
-               'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media '
-               'nonbreaking save table contextmenu directionality emoticons template paste textcolor '
-               'autosave noneditable',
-    'toolbar1': 'django_saveandcontinue | undo redo | cut copy paste | searchreplace | styleselect removeformat | '
-                'fontsizeselect | forecolor backcolor | code preview | spellchecker | fullscreen',
-    'toolbar2': 'bold italic underline strikethrough | alignleft aligncenter alignright alignjustify '
-                '| bullist numlist outdent indent | blockquote hr charmap nonbreaking '
-                '| link anchor | image media emoticons | table | codesample | spoiler-add spoiler-remove',
-    'contextmenu': 'formats | cut copy paste | link image | inserttable row cell',
-    'style_formats': [
-        {'title': 'Special', 'items': [
-            {'title': 'Small text', 'inline': 'small'},
-            {'title': 'Keyboard input', 'inline': 'kbd'},
-            {'title': 'Sample output', 'inline': 'samp'},
-        ]},
-        {'title': 'Image', 'items': [
-            {'title': 'Image Left', 'selector': 'img', 'styles': {'float': 'left', 'margin': '10px'}},
-            {'title': 'Image Right', 'selector': 'img', 'styles': {'float': 'right', 'margin': '10px'}}
-        ]},
-    ],
-    'style_formats_merge': True,
-    'width': 1024,
-    'height': 600,
-    'plugin_preview_width': 1024,
-    'plugin_preview_height': 600,
-    'image_advtab': True,
-    'default_link_target': '_blank',
-    'extended_valid_elements': 'span[class]',
-    'spoiler_caption': '<span class="fa fa-plus-square"></span>&nbsp;Click to show',
-    'pagebreak_separator': '<!-- ***Blog Cut*** -->',
-    'external_plugins': {
-        'spoiler': '../../../common_content/js/spoiler/plugin.min.js',
-        'django_saveandcontinue': '../../../common_content/js/django_saveandcontinue/plugin.min.js',
-        'codesample': '../../../common_content/js/codesample/plugin.min.js',
-        'preview': '../../../common_content/js/preview/plugin.min.js'
-    },
-    'codesample_languages': [
-        {'text': 'Python', 'value': 'python'},
-        {'text': 'HTML/XML', 'value': 'markup'},
-        {'text': 'Django/Jinja2', 'value': 'django'},
-        {'text': 'CSS', 'value': 'css'},
-        {'text': 'JavaScript', 'value': 'javascript'},
-        {'text': 'C++', 'value': 'cpp'},
-        {'text': 'C', 'value': 'c'},
-        {'text': 'C#', 'value': 'csharp'},
-        {'text': 'Windows BAT', 'value': 'batch'},
-        {'text': 'Bash', 'value': 'bash'},
-        {'text': 'YAML', 'value': 'yaml'},
-        {'text': 'SQL', 'value': 'sql'},
-        {'text': 'reStructuredText', 'value': 'rest'},
-        {'text': 'Plain Text', 'value': 'none'},
-    ],
-    'content_css': [common_content_base_url + 'css/prism.css'],
-}
-TINYMCE_SPELLCHECKER = True
-TINYMCE_ADDITIONAL_JS_URLS = [
-    common_content_base_url + 'js/prism.min.js',
-    common_content_base_url + 'js/prism-django.min.js'
-]
-
-
-
+CKEDITOR_CONFIGS = {
+            'default':{ 'toolbar': 'Custom',
+                        'height': 500,
+                        'toolbar_Custom': [
+                                 ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo' ,'CodeSnippet'],
+                                 ['Link', 'Unlink', 'Anchor'],
+                                 ['Image', 'Flash', 'Table', 'HorizontalRule'],
+                                 ['TextColor', 'BGColor'],
+                                 ['Smiley', 'SpecialChar'],
+                                 ['Source'],
+                             ],'extraPlugins': 'codesnippet'
+                           },
+                     }
 
 
 
