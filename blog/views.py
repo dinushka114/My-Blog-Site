@@ -45,7 +45,8 @@ class TagIndexView(CategoryMixin , TagMixin , ListView):
     context_object_name = 'posts'
     paginate_by = 7
     def get_queryset(self):
-        return Post.objects.filter(tags__slug=self.kwargs.get('slug')).order_by('-publish')
+        # posts = Post.objects.filter(status = 'published')
+        return Post.objects.filter(status='published' , tags__slug=self.kwargs.get('slug')).order_by('-publish')
 
 class CategoryIndexView(CategoryMixin , TagMixin , ListView):
     model = Post
