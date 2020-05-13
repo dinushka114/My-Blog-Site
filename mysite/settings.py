@@ -38,7 +38,6 @@ SITE_ID = 1
 
 INSTALLED_APPS = [
     'taggit',
-    'tinymce',
     'blog',
     'meta',
     'django.contrib.admin',
