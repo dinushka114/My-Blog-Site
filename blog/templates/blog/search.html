@@ -14,7 +14,7 @@
           <a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0" class="card-title" >{{post.title}}</h2></a>
           <hr style="margin:2px 0px;">
           <p style="margin-top:5px;" class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
-          <a  href="{{ post.get_absolute_url }}" class="btn btn-success btn-sm">Read More</a>
+          <button type="button"  class="btn btn-success" name="button"> <a style="color:white;text-decoration:none;" href="{{post.get_absolute_url}}">Read More</a> </button>
         </div>
       </div>
       {% empty %}

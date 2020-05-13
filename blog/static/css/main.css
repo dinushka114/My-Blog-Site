@@ -55,8 +55,8 @@ body {
   padding: 14px 28px; /* Add some padding */
   cursor: pointer; /* Add a pointer cursor on mouse-over */
   outline: none;
-  -moz-outline-style: none
 }
+
 
 .success:hover{
   background-color: #4CAF50;
