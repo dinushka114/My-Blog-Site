@@ -226,6 +226,23 @@ TINYMCE_ADDITIONAL_JS_URLS = [
     common_content_base_url + 'js/prism-django.min.js'
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+
+
+
 
 AWS_ACCESS_KEY_ID = 'AKIA52AEH2JR2LCHREGT'
 AWS_SECRET_ACCESS_KEY = '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'
