@@ -167,7 +167,7 @@ CKEDITOR_CONFIGS = {
                         'height': 500,
                         'toolbar_Custom': [
                                  ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo' ,'CodeSnippet'],
-                                 ['Link', 'Unlink', 'Anchor'],
+                                 ['Link', 'Unlink', 'Anchor' , 'BulletedList'],
                                  ['Image', 'Flash', 'Table', 'HorizontalRule'],
                                  ['TextColor', 'BGColor'],
                                  ['Smiley', 'SpecialChar'],
