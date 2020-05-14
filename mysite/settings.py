@@ -178,12 +178,7 @@ CKEDITOR_CONFIGS = {
 
 
 
-AWS_ACCESS_KEY_ID = 'AKIA52AEH2JR2LCHREGT'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'mytechdiary'
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 django_heroku.settings(locals())
