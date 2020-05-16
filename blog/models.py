@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 from PIL import Image
 
@@ -25,7 +26,7 @@ class Post(models.Model):
     image = models.ImageField( blank=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_post')
-    body = RichTextField('content')
+    body = RichTextUploadingField('content')
     meta_description = models.TextField(max_length=160 , blank=True)
     tags = TaggableManager()
     publish = models.DateTimeField(default=timezone.now)

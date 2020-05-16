@@ -24,10 +24,10 @@ STATIC_DIR = os.path.join(BASE_DIR , 'static')
 SECRET_KEY = '$-7@bslx6kdv^rhjs8z%=%5&gxi%5)^wcr5)nt2$14(z$vyva('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['mytechdiary.herokuapp.com']
-# ALLOWED_HOSTS = ['localhost']
+# ALLOWED_HOSTS = ['mytechdiary.herokuapp.com']
+ALLOWED_HOSTS = ['localhost']
 
 INTERNAL_IPS = [
     # ...
@@ -52,10 +52,11 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'storages',
     'robots',
-    'ckeditor'
-
-
+    'ckeditor',
+    'ckeditor_uploader'
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -176,7 +177,9 @@ CKEDITOR_CONFIGS = {
                            },
                      }
 
-
+AWS_ACCESS_KEY_ID = 'AKIA52AEH2JR2LCHREGT'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'mytechdiary'
 
 
 

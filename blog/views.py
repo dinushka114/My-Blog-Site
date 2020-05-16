@@ -27,7 +27,7 @@ class AboutView(CategoryMixin , TagMixin , TemplateView):
 class ProjectsView(CategoryMixin , TagMixin , TemplateView):
     template_name = 'blog/projects.html'
 
-class PostListView(CategoryMixin , TagMixin , ListView):
+class PostListView( CategoryMixin , TagMixin , ListView):
     model = Post
     template_name = 'blog/index.html'
     paginate_by = 7

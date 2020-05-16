@@ -13,5 +13,6 @@ urlpatterns = [
     path('about/', AboutView.as_view() , name = 'about' ),
     path('projects/' , ProjectsView.as_view() , name = 'projects'),
 
+
     # path('archive/<int:year>/<int:month>' , BlogMonthArchiveView.as_view() , name = 'month_archive')
 ]
