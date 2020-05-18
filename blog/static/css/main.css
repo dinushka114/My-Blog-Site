@@ -48,6 +48,7 @@ body {
 }
 
 
+
 .btn {
   border-radius: 0;
   border: none; /* Remove borders */
@@ -169,6 +170,17 @@ form button:hover {
 .tags .btn{
   border-radius: 5px;
 
+}
+
+.posts{
+  padding-top: 35px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.posts .more{
+  float: right;
+  margin-bottom: 20px;
 }
 
 .footer {

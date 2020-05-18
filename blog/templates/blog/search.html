@@ -10,13 +10,19 @@
       {% for post in posts %}
 
       <div class="card mb-4 posts">
-        <div class="card-body">
-          <a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0" class="card-title" >{{post.title}}</h2></a>
-          <hr style="margin:2px 0px;">
-          <p style="margin-top:5px;" class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
-          <!-- <button type="button"  class="btn btn-success" name="button"> <a style="color:white;text-decoration:none;" href="{{post.get_absolute_url}}">Read More</a> </button> -->
-          <a  href="{{ post.get_absolute_url }}" class="btn btn-success">Read More</a>
-        </div>
+        <a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0;color:black;" class="card-title" >{{post.title}}</h2></a>
+        <small >
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          {{post.publish | date:"F d,Y"}}
+        </small>
+          <pclass="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
+          <!-- <button type="button"  class="btn btn-success" name="button"> <a style="color" href="{{post.get_absolute_url}}">Read More</a> </button> -->
+          <!-- <a href="{{ post.get_absolute_url }}"><button type="button" class="btn btn-success"  name="button">Read More</button></a>  -->
+          <div class="card-bottom">
+            <div class="more">
+              <a  href="{{ post.get_absolute_url }}" class="btn btn-success btn-sm">Read More</a>
+            </div>
+          </div>
       </div>
       {% empty %}
 
