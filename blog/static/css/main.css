@@ -169,8 +169,10 @@ form button:hover {
 
 .tags .btn{
   border-radius: 5px;
-
+  margin-top: 5px;
 }
+
+
 
 .posts{
   padding-top: 35px;
