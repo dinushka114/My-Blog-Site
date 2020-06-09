@@ -1,12 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   /* font-family: candara; */
   /* font-family: montserrat; */
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-size: 18px;
   background-color: #f2f2f2;
 }
@@ -23,7 +24,7 @@ body {
 .jumbotron h1 {
   font-size: 85px;
   font-weight: bold;
-  font-family: "Grand Hotel", cursive;
+  font-family: 'Bangers', cursive;
   color: #222831;
 }
 
@@ -50,12 +51,12 @@ body {
 
 .navbar .navbar-brand {
   color: #f3f2f2;
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 26px;
 }
 
 .navbar .navbar-brand:hover {
-  color: #393e46;
+  color: #00adb5;
   cursor: pointer;
 }
 
