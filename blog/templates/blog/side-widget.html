@@ -10,7 +10,7 @@
           {% for cat in categories %}
           <ul class="list-unstyled mb-0">
             <li class="list-group-item">
-                <a href="{% url 'blog:categories' cat.id %}"> <p class="text-secondary" style="margin-bottom:5px;">{{cat}}</p> </a>
+                <a style="color:#333333;" href="{% url 'blog:categories' cat.id %}"> <p style="margin-bottom:5px;">{{cat}}</p> </a>
             </li>
           </ul>
           {% endfor %}
