@@ -26,36 +26,10 @@
 </head>
 <body>
 
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <i class="fa fa-book fa-2x"></i>
-      <a href="/"><h3>My Tech Diary</h3></a>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto items">
-        <li class="nav-item">
-          <a style="color:white;" class="nav-link navlink" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a style="color:white;" class="nav-link navlink" href="{% url 'blog:projects' %}">My Projects</a>
-        </li>
-        <li class="nav-item ">
-          <a style="color:white;" class="nav-link navlink" href="{% url 'blog:about' %}">About Me</a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-</nav> -->
-
 <div class="header">
-      <div class="jumbotron">
-        <h1><i class="fa fa-book"></i> My Tech Diary</h1>
-      </div>
+    <div class="jumbotron">
+      <h1><i class="fa fa-book"></i> My Tech Diary</h1>
+    </div>
 
       <div id="myNav">
         <nav class="navbar navbar-expand-lg">
@@ -102,24 +76,11 @@
       </div>
     </div>
 
-<!-- <div class="middle-bar clearfix">
-      <div class="container">
-      <div class="left-side">
-        <h3></h3>
-        </div>
-      <form method="GET" action="{% url 'blog:blog-search' %}">
-        <div class="search">
-          <input type="text" placeholder="Search for.." name='query'>
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-      </form>
-    </div>
-  </div> -->
-
   <div class="container main-page">
     <div class="row">
       <div class="col-sm-8">
         {% block content %}
+
         {% endblock content %}
       {% include 'blog/paginator.html' %}
       </div>
@@ -148,7 +109,7 @@
       </div>
       <div class="bottom-line clearfix">
         <div class="site-name">
-          <h4>©2020 mytechdiary.herokuapp.com</h4>
+          <h4>©2020 www.mytechdiar.tk</h4>
         </div>
 
       </div>
