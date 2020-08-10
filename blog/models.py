@@ -7,6 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 from PIL import Image
 
+
 class Category(models.Model):
     category_name = models.CharField(max_length=50)
 
@@ -34,6 +35,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length = 10 , choices=STATUS_CHOICES , default='draft')
 
+    
     class meta:
         ordering = ('-publish')
 
@@ -49,3 +51,5 @@ class Post(models.Model):
                                         'pk': self.pk,
                                         'slug':self.slug
                                         })
+
+   

@@ -24,7 +24,7 @@ STATIC_DIR = os.path.join(BASE_DIR , 'static')
 SECRET_KEY = '$-7@bslx6kdv^rhjs8z%=%5&gxi%5)^wcr5)nt2$14(z$vyva('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mytechdiary.herokuapp.com' , 'localhost']
 #ALLOWED_HOSTS = ['localhost']
@@ -40,7 +40,6 @@ SITE_ID = 1
 INSTALLED_APPS = [
     'taggit',
     'blog',
-    'meta',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +52,7 @@ INSTALLED_APPS = [
     'storages',
     'robots',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
