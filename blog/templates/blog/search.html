@@ -5,30 +5,44 @@
 {% endblock title %}
 {% block content %}
 
-      <h2>Search Results for contain  <em>"{{request.GET.query}}"</em> </h2>
-      <hr>
-      {% for post in posts %}
+<header class="masthead" style="background-image: url('{% static 'images/search.jpg' %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Search Blog</h1>
+          <span class="subheading">Search Results for contain  <em>"{{request.GET.query}}"</em> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-      <div class="card mb-4 posts">
-        <a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0;color:black;" class="card-title" >{{post.title}}</h2></a>
-        <small >
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          {{post.publish | date:"F d,Y"}}
-        </small>
-          <pclass="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
-          <!-- <button type="button"  class="btn btn-success" name="button"> <a style="color" href="{{post.get_absolute_url}}">Read More</a> </button> -->
-          <!-- <a href="{{ post.get_absolute_url }}"><button type="button" class="btn btn-success"  name="button">Read More</button></a>  -->
-          <div class="card-bottom">
-            <div class="more">
-              <a style="background:#00adb5;text-decoration:none;" href="{{ post.get_absolute_url }}" class="btn btn-link">Read More</a>
-            </div>
+      
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            {% for post in posts %}
+
+            <a href="{{post.get_absolute_url}}"><h2 class="post-title">
+              {{ post.title }}
+            </h2></a>
+            <p class="post-subtitle">
+              {{post.body|safe|truncatewords:30|linebreaks}}
+            </p>
+
+            
+
+            {% empty %}
+
+            
+            <h2>No results for "{{request.GET.query}}"</h2>
+            
+            {% endfor %}
           </div>
-      </div>
-      {% empty %}
-
-      <div class="p-3 mb-2 bg-danger text-white">
-          <p>No results for "{{request.GET.query}}"</p>
+        </div>
       </div>
 
-    {% endfor %}
 {% endblock content %}

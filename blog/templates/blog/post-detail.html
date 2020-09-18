@@ -17,26 +17,27 @@
 {% block content %}
 
 
-  <h3>{{object.title}}</h3>
-  <div class="featured-img">
-    <small>
-      <i class="fa fa-calendar" aria-hidden="true"></i>
-      {{object.publish | date:"F d,Y"}} |
-      <i class="fa fa-comment"></i>
-      <a class="text-muted" href="{{post.get_absolute_url}}#disqus_thread"> Comments</a>
-    </small> <hr>
-    <img class="img-fluid" src="{{object.image.url}}" alt="image">
-  </div>
-  <p style="margin-bottom:0">{{object.body|safe}}</p>
-  <ul class="list-unstyled" style="margin-top:20px;">
-      <li>
-        <i class="fa fa-tags"></i>
-          {% for tag in post.tags.all  %}
-            <small><a style="color:black;" href="{% url 'blog:tagged' tag.slug %}">{{tag}}</a></small>
-          {% endfor %}
-      </li>
-  </ul>
-  <hr>
+  <header class="masthead" style="background-image: url('{{object.image.url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{object.title}}</h1>
+            <span class="subheading">{{object.body|safe|truncatewords:10|linebreaks}}...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>{{object.body | safe}}</p>
+
+          <hr>
   <div id="disqus_thread" ></div>
 
       <script>
@@ -58,4 +59,12 @@
       })();
       </script>
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  
 {% endblock content %}

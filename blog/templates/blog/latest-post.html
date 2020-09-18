@@ -1,18 +1,10 @@
-<div class="card">
-  <h5 class="card-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Latest Posts</h5>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="list-unstyled mb-0">
-          {% for post in latest_posts %}
-          <li>
-              <a style="color:#333333;" href="{{post.get_absolute_url}}"> <p style="margin-bottom:5px;">{{post.title}}</p> </a>
-              <small><p class="text-muted"><i class="fa fa-calendar" aria-hidden="true"></i>
-              {{post.publish | date:"F d,Y" }}</p></small>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+{% for post in latest_posts %}
+<ul class="list-unstyled mb-0">
+  <li style="background-color: #eeeeee; padding: 14px; margin-bottom: 5px">
+    <a style="color: #4d4d4d ;" href="{{post.get_absolute_url}}">
+      <h6 style="margin-bottom: 5px">{{post.title}}</h6>
+    </a>
+  </li>
+</ul>
+
+{% endfor %}

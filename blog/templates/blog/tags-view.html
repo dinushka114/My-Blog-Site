@@ -2,30 +2,56 @@
 {% load static %}
 {% load blog_tags %}
 {% block title %}
-<title>{{request.GET.slug}}</title>
+<title>dinushka's blog Tag views</title>
 {% endblock title %}
 {% block content %}
 
-{% for post in posts %}
-<div class="card mb-4 posts">
-  <a href="{{ post.get_absolute_url }}"><h2 style="text-transform:uppercase;margin-bottom:0;color:black;" class="card-title text-center" >{{post.title}}</h2></a>
-  <small class="text-center">
-    <i class="fa fa-calendar" aria-hidden="true"></i>
-    {{post.publish | date:"F d,Y"}}
-  </small>
-  <hr>
-  <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
-    <p style="margin-top:5px;" class="card-text">{{post.body|safe|truncatewords:30|linebreaks}}</p>
-    <!-- <button type="button"  class="btn btn-success" name="button"> <a style="color" href="{{post.get_absolute_url}}">Read More</a> </button> -->
-    <!-- <a href="{{ post.get_absolute_url }}"><button type="button" class="btn btn-success"  name="button">Read More</button></a>  -->
-    <div class="card-bottom">
-      <div class="more">
-        <a style="background:#00adb5;text-decoration:none;" href="{{ post.get_absolute_url }}" class="btn btn-link">Read More</a>
+<header class="masthead" style="background-image: url('{% static 'images/theme.jpg' %}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Dinushka Piyumal</h1>
+          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+        </div>
       </div>
     </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+      {% for post in posts %}
+
+        <div class="post-preview">
+          <img src="{{post.image.url}}" alt="" class="img-fluid">
+          <a href="{{ post.get_absolute_url }}">
+            <h2 class="post-title">
+              {{ post.title }}
+            </h2>
+            <h3 class="post-subtitle">
+              {{post.body|safe|truncatewords:30|linebreaks}}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">piyumal</a>
+            {{post.publish | date:"F d,Y"}}</p>
+        </div>
+        <hr>
+
+        {% empty %}
+
+      <p>There are no posts</p>
+
+      {% endfor %}
+
+      
+
+    </div>
+  </div>
 </div>
-{% empty %}
-<p>Sorry..There is no posts..</p>
-{% endfor %}
 
 {% endblock content %}

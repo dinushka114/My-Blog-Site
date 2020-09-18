@@ -2,6 +2,7 @@
 {% load static %}
 {% load blog_tags %}
 <html lang="en">
+
 <head>
   {% block meta %}
   <meta charset="utf-8">
@@ -12,124 +13,169 @@
   {% block title %}
   {% endblock title %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Slabo 27px' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet"/>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet" />
   <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Assistant&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-  <link href="{% static 'css/main.css' %}" rel="stylesheet">
-  <link href="{% static "common_content/css/prism.css" %}" rel="stylesheet">
-  <script data-ad-client="ca-pub-1184944506748021" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <meta name="google-site-verification" content="Z8i4OzQ2QwjA4ejRCEmZiYtY_vpnBlWjETNC1YC4Zf4" />
+
+  <!-- new template meta -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <link href="{% static "css/clean-blog.min.css" %}" rel="stylesheet">
+
+  <!-- end new templte meta-->
+
 </head>
+
 <body>
 
-<div class="header">
-    <div class="jumbotron">
-      <h1><i class="fa fa-book"></i> My Tech Diary</h1>
-    </div>
-
-      <div id="myNav">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a href="/" class="navbar-brand">My Tech diary</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'blog:projects' %}">My Projects</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'blog:about' %}">About Me</a>
-                </li>
-              </ul>
-              <form method="GET" action="{% url 'blog:blog-search' %}" class="form-inline my-2 my-lg-0">
-                <input
-                  class="mr-sm-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  name="query"
-                />
-                <button class="my-2 my-sm-0" type="submit">
-                  <i class="fa fa-search"></i>
-                </button>
-              </form>
-            </div>
-          </div>
-        </nav>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" style="text-transform: uppercase;" href="/">Dinushka Piyumal</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog:about' %}">About Me</a>
+          </li>
+          <li class="nav-item">
+            <!-- <button class="openBtn btn" style="margin: 5px;color: aliceblue;" onclick="openSearch()"><i class="fas fa-search"></i></button> -->
+            <a class="nav-link" href="#" onclick="return openSearch()"><i class="fa fa-search"></i> Search</a>
+          </li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-  <div class="container main-page">
-    <div class="row">
-      <div class="col-sm-8">
-        {% block content %}
+  {% block content %}
+  {% endblock content %}
 
-        {% endblock content %}
-      {% include 'blog/paginator.html' %}
-      </div>
-      <div class="col-sm-4">
-        {% include 'blog/side-widget.html' %}
-      </div>
-    </div>
-  </div>
+  {% include 'blog/paginator.html' %}
 
-<div class="footer">
-      <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <p>I've written {% total_posts %} posts so far</p>
-              <p>Follow me on</p>
-              <div class="social">
-                <a href="https://www.linkedin.com/in/dinushka-piyumal-a689001a5/" target="_blank" class="fa fa-linkedin"></a>
-                <a href="https://www.instagram.com/dinushka_piyumal/" target="_blank" class="fa fa-instagram"></a>
-                <a href="https://api.whatsapp.com/send?phone=0763538804&text" target="_blank" class="fa fa-whatsapp"></a>
-                <a href="https://github.com/dinushka114" target="_blank" class="fa fa-github"></a>
-                <a href="mailto:dinushkapiyumal678@gmail.com" class="fa fa-envelope"></a>
-                <p>powerd by <a href="https://getbootstrap.com/" target="_blank">bootstrap</a> and <a href="https://www.djangoproject.com/" target="_blank">Django &#10084;</a> </p>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="bottom-line clearfix">
-        <div class="site-name">
-          <h4>©2020 www.mytechdiary.tk</h4>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+
+          <h2 style="padding-left: 10px;color: #f1f1f1;">Tags</h2>
+          <hr>
+
+          
+            
+            <ul class="list-unstyled taglist">
+              {% for tag in tags %}
+              <li >
+                <a style="margin-bottom: 5px;background:#eeeeee;color:#4d4d4d;text-decoration:none;" href="{% url 'blog:tagged' tag.slug %}" type="button"
+                  class="btn btn-link">
+                  {{tag.name}}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+
         </div>
-
+        <div class="col-sm-6 latest-post">
+          <h2 style="padding-left: 10px;color: #f1f1f1;">Latest Posts</h2>
+          <hr>
+          {% show_latest_post 5 %}
+        </div>
       </div>
-</div>
+
+    </div>
+    <ul class="list-inline text-center" style="margin-top: 30px;">
+      <li class="list-inline-item">
+        <a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-facebook-f fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="https://github.com/dinushka114">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="copyright" style="color: #f1f1f1;">  Copyright <span id="year" ></span> </p>
+  </footer>
+
+
+
 
   <script type="text/javascript">
     var year = new Date().getFullYear()
-    console.log(year);
+    var year_field = document.getElementById('year').innerHTML = year;
+  </script>
+
+  <div id="myOverlay" class="search-overlay">
+    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+    <div class="overlay-content">
+      <form method="GET" action="{% url 'blog:blog-search' %}">
+        <input type="search" placeholder="Search.." name="query">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openSearch() {
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function closeSearch() {
+      document.getElementById("myOverlay").style.display = "none";
+    }
   </script>
 
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script id="dsq-count-scr" src="//myblog-9rtxdxz3e3.disqus.com/count.js" async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/prism.js"></script>
   <script src="{% static "common_content/js/prism.min.js" %}"></script>
   <script src="{% static "common_content/js/prism-django.min.js" %}"></script>
+  <script src="{% static "js/clean-blog.min.js" %}"></script>
 
 </body>
+
 </html>
