@@ -25,6 +25,8 @@ class Post(models.Model):
                             unique_for_date='publish')
     category = models.ForeignKey(Category , on_delete = models.CASCADE)
     image = models.ImageField( blank=True)
+    img_url = models.TextField(default='')
+    img_credits = models.TextField(default='')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_post')
     body = RichTextUploadingField('content')
@@ -48,7 +50,6 @@ class Post(models.Model):
                                         'year':self.publish.year,
                                         'month':self.publish.month,
                                         'day':self.publish.day,
-                                        'pk': self.pk,
                                         'slug':self.slug
                                         })
 

@@ -2,7 +2,7 @@
 {% load static %}
 {% load blog_tags %}
 {% block title %}
-<title>Dinushka's Blog</title>
+<title>Dinushka piyumal</title>
 {% endblock title %}
 {% block content %}
 
@@ -12,8 +12,8 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>Dinushka Piyumal</h1>
-          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <h1>Share the knowledge</h1>
+          <span class="subheading" id="sub"></span>
         </div>
       </div>
     </div>
@@ -27,7 +27,12 @@
       {% for post in posts %}
 
         <div class="post-preview">
+
+          {% if post.image.url %}
           <img src="{{post.image.url}}" alt="" class="img-fluid">
+          {% else %}
+          <img src="{{post.img_url}}" alt="" class="img-fluid">
+          {% endif %}
           <a href="{{ post.get_absolute_url }}">
             <h2 class="post-title">
               {{ post.title }}
@@ -37,7 +42,7 @@
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="#">piyumal</a>
+            <a href="{% url 'blog:about' %}">admin</a>
             {{post.publish | date:"F d,Y"}}</p>
         </div>
         <hr>
@@ -47,6 +52,22 @@
     </div>
   </div>
 </div>
+
+<script>
+  var i = 0;
+var txt = 'Next second of digital world.';
+var speed = 40;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("sub").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+window.onload = typeWriter();
+</script>
 
 
 

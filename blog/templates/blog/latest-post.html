@@ -1,8 +1,20 @@
-{% for post in latest_posts %}
+<!-- {% for post in latest_posts %}
 <ul class="list-unstyled mb-0">
   <li style="background-color: #eeeeee; padding: 14px; margin-bottom: 5px">
     <a style="color: #4d4d4d ;" href="{{post.get_absolute_url}}">
       <h6 style="margin-bottom: 5px">{{post.title}}</h6>
+    </a>
+  </li>
+</ul>
+
+{% endfor %} -->
+
+{% for post in latest_posts %}
+<ul class="list-unstyled mb-0">
+  <li>
+    <a style="color: #f1f1f1;" href="{{post.get_absolute_url}}">
+      <h6 style="margin-bottom: 5px ; font-size: 22px;"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+        {{post.title}}</h6>
     </a>
   </li>
 </ul>

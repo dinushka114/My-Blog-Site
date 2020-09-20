@@ -33,8 +33,10 @@
     rel='stylesheet' type='text/css'>
 
   <link href="{% static "css/clean-blog.min.css" %}" rel="stylesheet">
+  <link href="{% static "common_content/css/prism.css" %}" rel="stylesheet">
 
   <!-- end new templte meta-->
+
 
 </head>
 
@@ -42,7 +44,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" style="text-transform: uppercase;" href="/">Dinushka Piyumal</a>
+      <a class="navbar-brand" style="text-transform: uppercase;" href="/">D i n u s h k a P i y u m a l</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -81,16 +83,18 @@
 
           
             
-            <ul class="list-unstyled taglist">
-              {% for tag in tags %}
-              <li >
-                <a style="margin-bottom: 5px;background:#eeeeee;color:#4d4d4d;text-decoration:none;" href="{% url 'blog:tagged' tag.slug %}" type="button"
-                  class="btn btn-link">
-                  {{tag.name}}
-                </a>
-              </li>
-              {% endfor %}
-            </ul>
+            <div class="tagside">
+              <ul class="list-unstyled taglist">
+                {% for tag in tags %}
+                <li >
+                  <a style="margin-bottom: 5px;background:#eeeeee;color:#4d4d4d;text-decoration:none;" href="{% url 'blog:tagged' tag.slug %}" type="button"
+                    class="btn btn-link">
+                    {{tag.name}}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
 
         </div>
         <div class="col-sm-6 latest-post">
@@ -128,7 +132,7 @@
       </li>
     </ul>
 
-    <p class="copyright" style="color: #f1f1f1;">  Copyright <span id="year" ></span> </p>
+    <p class="copyright" style="color: #f1f1f1;">  www.dinushkapiyumal.com <span id="year" ></span> </p>
   </footer>
 
 
